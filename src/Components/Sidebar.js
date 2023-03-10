@@ -36,6 +36,15 @@ function Sidebar() {
         <SideBarChat />
         <SideBarChat />
         <SideBarChat />
+        <SideBarChat />
+        <SideBarChat />
+        <SideBarChat />
+        <SideBarChat />
+        <SideBarChat />
+        <SideBarChat />
+        <SideBarChat />
+        <SideBarChat />
+
       </div>
     </div>
   );
