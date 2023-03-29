@@ -8,7 +8,7 @@ import InsertEmoticonOutlinedIcon from "@mui/icons-material/InsertEmoticonOutlin
 import { IconButton } from "@mui/material";
 import MicIcon from "@mui/icons-material/Mic";
 
-function ChatComp() {
+function ChatComp({messages}) {
   const [inputData, setInputData] = useState("");
   return (
     <div className="chat">
@@ -31,21 +31,11 @@ function ChatComp() {
         </div>
       </div>
       <div className="chat_body">
-        <p className="chat_message">
-          <span className="chat_name">Brijesh</span>
-          This is a message
-          <span className="chat_timestamp">{new Date().toUTCString()}</span>
-        </p>
-        <p className="chat_message chat_reciever">
-          <span className="chat_name">Brijesh</span>
-          This is a message
-          <span className="chat_timestamp">{new Date().toUTCString()}</span>
-        </p>
-        <p className="chat_message">
-          <span className="chat_name">Brijesh</span>
-          This is a message
-          <span className="chat_timestamp">{new Date().toUTCString()}</span>
-        </p>
+      {messages?.map((obj, idx)=>  <p className={`chat_message ${obj.received && "chat_reciever"}`} key={idx}>
+          <span className="chat_name">{obj.name}</span>
+          {obj.message}
+          <span className="chat_timestamp">{obj.timestamp}</span>
+        </p>)}  
       </div>
       <div className="chat_footer">
         <InsertEmoticonOutlinedIcon />
