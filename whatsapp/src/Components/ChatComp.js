@@ -7,9 +7,24 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import InsertEmoticonOutlinedIcon from "@mui/icons-material/InsertEmoticonOutlined";
 import { IconButton } from "@mui/material";
 import MicIcon from "@mui/icons-material/Mic";
+import axios from "../axios"
 
 function ChatComp({messages}) {
   const [inputData, setInputData] = useState("");
+
+  const sendMessage = async (e) =>{
+    e.preventDefault();
+
+   await axios.post('/messages/new', {
+      
+        message: inputData,
+        name: "jack",
+        timestamp: "just now",
+        received: false
+    
+    });
+    setInputData("");                      
+  }
   return (
     <div className="chat">
       <div className="chat_header">
@@ -46,7 +61,7 @@ function ChatComp({messages}) {
             placeholder="Type a message"
             type="text"
           ></input>
-          <button type="submit">Send a message</button>
+          <button onClick={sendMessage} type="submit">Send a message</button>
         </form>
         <MicIcon />
       </div>
